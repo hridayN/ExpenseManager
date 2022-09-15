@@ -1,0 +1,23 @@
+There should be provision to:
+See Expenses
+	See all the expense(s) in a range of dates in a tabular format
+	- In table there should be provision to filter the data:
+	DateWise:
+	CategoryWise
+	PaymentModeWise
+	
+Add Expenses
+	CategoryList(Add if not exists)
+	Description
+	Date
+	Amount
+	PaymentModeList(Add if not exists)
+
+Default Data (on page load)
+	CategoryList
+	
+Add expense
+	CategoryId
+	Amount
+	Description
+	Date
