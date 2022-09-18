@@ -1,5 +1,7 @@
 using ExpenseManager.API.Constants;
 using ExpenseManager.API.Infrastructure;
+using ExpenseManager.API.Infrastructure.Contracts;
+using ExpenseManager.API.Infrastructure.Repositories.Base;
 using ExpenseManager.API.Services.Contract;
 using ExpenseManager.API.Services.Core;
 using ExpenseManager.API.Utilites;
@@ -18,10 +20,12 @@ builder.Configuration.Bind(ExpenseManagerOptions.ExpenseManager, expenseManagerO
 builder.Services.AddSingleton(expenseManagerOptions);
 
 // Add services to the container.
+builder.Services.AddScoped<IExpenseService, ExpenseService>();
+builder.Services.AddScoped<IExpressionFilter, ExpressionFilter>();
 builder.Services.AddScoped<IRepositoryService, RepositoryService>();
 
 // Add Infrastructure layer
-
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

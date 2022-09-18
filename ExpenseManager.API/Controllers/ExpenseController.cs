@@ -1,4 +1,5 @@
-﻿using ExpenseManager.API.Services.Contract;
+﻿using ExpenseManager.API.DTO;
+using ExpenseManager.API.Services.Contract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseManager.API.Controllers
@@ -24,9 +25,12 @@ namespace ExpenseManager.API.Controllers
             _expenseService = expenseService;
         }
 
-        public async Task<IActionResult> SearchExpenses()
+        [HttpPost]
+        [Route("searchExpenses/expense")]
+        public async Task<IActionResult> SearchExpenses(SearchExpensesRequest searchExpensesRequest)
         {
-
+            SearchExpensesResponse searchExpensesResponse = await _expenseService.SearchExpenses(searchExpensesRequest);
+            return CreateResponse(searchExpensesResponse, searchExpensesRequest);
         }
     }
 }

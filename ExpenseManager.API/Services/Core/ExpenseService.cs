@@ -37,9 +37,7 @@ namespace ExpenseManager.API.Services.Core
             SearchExpensesResponse searchExpensesResponse = new SearchExpensesResponse();
             ExpenseEntity expenseEntity = ObjectMapper.Mapper.Map<SearchExpensesRequest, ExpenseEntity>(searchExpensesRequest);
             expenseEntity.CategoryId = (int)searchExpensesRequest.Expense.Category.Id;
-
-
-            return searchExpensesResponse;
+            return null;
         }
     }
 }
